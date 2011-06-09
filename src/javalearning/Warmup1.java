@@ -2,6 +2,29 @@ package javalearning;
 
 public class Warmup1 {
 
+	public static String backAround(String str){
+		if(str.isEmpty())
+			return "";
+		
+		String lastChar = str.substring(str.length()-1);
+		return lastChar + str + lastChar;
+	}
+	
+	public static String delDel(String str){
+		int length = str.length();
+		if(length<4)
+			return str;
+		
+		String body = "";
+		String substring = str.substring(1, 4);
+		if(substring.contains("del"))
+			body = str.charAt(0)+ str.substring(4);
+		else
+			body = str;
+		
+		return body;
+	}
+	
 	public static int diff21(int n){
 		
 		int diff = Math.abs(n-21);
@@ -12,12 +35,94 @@ public class Warmup1 {
 		return diff;
 	}
 	
+	public static String front22(String str){
+		String front = "";
+		String body = "";
+		
+		if(str.isEmpty())
+			return "";
+		
+		if(str.length() < 2){
+			front = str;
+			
+			body = front + str + front;
+		}else{
+			front = str.substring(0, 2);
+			body = front + str + front;
+		}
+		return body;
+	}
+	
+	public static String front3(String str){
+		if(str.length() < 3)
+			return str+str+str;
+		
+		String sub = str.substring(0, 3);
+		
+		return sub+sub+sub;
+	}
+	
+	public static String frontBack(String str){
+		
+		if(str.length()==1 || str.isEmpty())
+			return str;
+		
+		char front = str.charAt(0);
+		char back = str.charAt(str.length()-1);
+		String substring = str.substring(1, str.length()-1);
+		String string = back+substring+front;
+		
+		return string;
+	}
+	
+	public static boolean hasTeen(int a, int b, int c){
+		return (a>=13 && a<=19) || (b>=13 && b<=19) || (c>=13 && c<=19);
+	}
+	
+	public static boolean icyHot(int temp1, int temp2){
+		
+		if((temp1<0 && temp2 <0) || (temp1>100 && temp2>100))
+			return false;
+		
+		if((temp1>=0 && temp1<=100) || (temp2>=0 && temp2<=100))
+			return false;
+		
+		return true;
+	}
+	
+	public static boolean in1020(int a, int b){
+		return (a>=10 && a<=20)||(b>=10 && b<=20);
+	}
+	
+	public static boolean loneTeen(int a, int b){
+		boolean teenA = a>=13 && a<=19;
+		boolean teenB = b>=13 && b<=19;
+
+		if(teenA == true && teenB == true)
+			return false;
+		
+		return (teenA || teenB);
+	}
+	
 	public static boolean makes10(int a, int b){
 		int sum = a + b;
 		if(a==10 || b==10 || sum ==10)
 			return true;
 		
 		return false;
+	}
+	
+	public static String missingChar(String str, int n){
+		char[] charArray = str.toCharArray();
+		
+		String tmp="";
+		for(int i=0; i<charArray.length; i++){
+			if(i!=n){
+				tmp = tmp + charArray[i];
+			}
+		}
+		
+		return tmp;
 	}
 	
 	public static boolean monkeyTrouble(boolean aSmile, boolean bSmile){
@@ -71,6 +176,10 @@ public class Warmup1 {
 		return false;
 	}
 	
+	public static boolean startHi(String str){
+		return str.startsWith("hi");
+	}
+	
 	public static int sumDouble(int num1, int num2){
 		if(num1 == num2){
 			return 2*(num1 + num2);
@@ -79,47 +188,11 @@ public class Warmup1 {
 		}
 	}
 	
-	public static String missingChar(String str, int n){
-		char[] charArray = str.toCharArray();
+	public static boolean mixStart(String str){
+		if(str.length()<3)
+			return false;
 		
-		String tmp="";
-		for(int i=0; i<charArray.length; i++){
-			if(i!=n){
-				tmp = tmp + charArray[i];
-			}
-		}
-		
-		return tmp;
+		String substring = str.substring(1, 3);
+		return substring.equals("ix");
 	}
-	
-	public static String frontBack(String str){
-		
-		if(str.length()==1 || str.isEmpty())
-			return str;
-		
-		char front = str.charAt(0);
-		char back = str.charAt(str.length()-1);
-		String substring = str.substring(1, str.length()-1);
-		String string = back+substring+front;
-		
-		return string;
-	}
-	
-	public static String front3(String str){
-		if(str.length() < 3)
-			return str+str+str;
-		
-		String sub = str.substring(0, 3);
-		
-		return sub+sub+sub;
-	}
-	
-	public static String backAround(String str){
-		if(str.isEmpty())
-			return "";
-		
-		String lastChar = str.substring(str.length()-1);
-		return lastChar + str + lastChar;
-	}
-	
 }
