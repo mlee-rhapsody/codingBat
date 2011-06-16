@@ -14,6 +14,79 @@ import org.junit.Test;
 public class Warmup1Tests {
 	
 	@Test
+	public void everyNth(){
+		assertEquals("Mrce", Warmup1.everyNth("Miracle", 2));
+		assertEquals("aceg", Warmup1.everyNth("abcdefg", 2));
+		assertEquals("adg", Warmup1.everyNth("abcdefg", 3));
+	}
+	
+	@Test
+	public void endup(){
+		assertEquals("HeLLO", Warmup1.endUp("Hello"));
+		assertEquals("hi thERE", Warmup1.endUp("hi there"));
+		assertEquals("HI", Warmup1.endUp("hi"));
+	}
+	
+	@Test
+	public void lastDigit(){
+		assertEquals(true, Warmup1.lastDigit(7, 17));
+		assertEquals(false, Warmup1.lastDigit(6, 17));
+		assertEquals(true, Warmup1.lastDigit(3, 113));
+		assertEquals(true, Warmup1.lastDigit(0, 0));
+		assertEquals(true, Warmup1.lastDigit(0, 1110));
+		assertEquals(false, Warmup1.lastDigit(0, 1));
+		
+		
+	}
+	
+	@Test
+	public void stringE(){
+		assertEquals(true, Warmup1.stringE("Hello"));
+		assertEquals(true, Warmup1.stringE("Heelle"));
+		assertEquals(false, Warmup1.stringE("Heelele"));
+	}
+	
+	@Test
+	public void max1020(){
+		assertEquals(19, Warmup1.max1020(11, 19));
+		assertEquals(19, Warmup1.max1020(19, 11));
+		assertEquals(11, Warmup1.max1020(11, 9));
+		assertEquals(10, Warmup1.max1020(10, 10));
+		assertEquals(20, Warmup1.max1020(20, 20));
+		assertEquals(0, Warmup1.max1020(-2, -2));
+		assertEquals(10, Warmup1.max1020(10, 21));
+		
+	}
+	
+	@Test public void in3050(){
+		assertEquals(true, Warmup1.in3050(30, 31));
+		assertEquals(false, Warmup1.in3050(30, 41));
+		assertEquals(true, Warmup1.in3050(40, 50));
+	}
+	
+	@Test public void close10(){
+		assertEquals(8, Warmup1.close10(8, 13));
+		assertEquals(8, Warmup1.close10(13, 8));
+		assertEquals(0, Warmup1.close10(13, 7));
+		
+	}
+	@Test
+	public void intMax(){
+		assertEquals(3, Warmup1.intMax(1, 2, 3));
+		assertEquals(3, Warmup1.intMax(1, 3, 2));
+		assertEquals(3, Warmup1.intMax(3, 2, 1));
+		assertEquals(0, Warmup1.intMax(0, 0, 0));
+	}
+	
+	@Test
+	public void startOz(){
+		assertEquals("o", Warmup1.startOz("ounce"));
+		assertEquals("oz", Warmup1.startOz("ozymandias"));
+		assertEquals("z", Warmup1.startOz("bzoo"));
+		assertEquals("o", Warmup1.startOz("oxx"));
+	}
+	
+	@Test
 	public void mixStart(){
 		assertEquals(true, Warmup1.mixStart("mix snacks"));
 		assertEquals(true, Warmup1.mixStart("pix snacks"));
