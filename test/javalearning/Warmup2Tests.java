@@ -2,10 +2,88 @@ package javalearning;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class Warmup2Tests {
+
+	@Test
+	public void has271(){
+		int[] num0 = {};
+		assertEquals(false, Warmup2.has271(num0));
+		
+		int[] num1 = {1,2,7,1};
+		assertEquals(true, Warmup2.has271(num1));
+		
+		int[] num2 = {1,2,8,1};
+		assertEquals(false, Warmup2.has271(num2));
+		
+		int[] num3 = {2,7,1};
+		assertEquals(true, Warmup2.has271(num3));
+		
+		int[] num4 = {2,7,3};
+		assertEquals(true, Warmup2.has271(num4));
+		
+	}
+	
+	@Test
+	public void noTriples(){
+		
+		int[] num1 = {1, 1, 2, 2, 1};
+		assertEquals(true, Warmup2.noTriples(num1));
+		
+		int[] num2 = {1, 1, 2, 2, 2, 1};
+		assertEquals(false, Warmup2.noTriples(num2));
+		
+		int[] num3 = {1, 1, 1, 2, 2, 2, 1};
+		assertEquals(false, Warmup2.noTriples(num3));
+		
+		int[] num4 = {};
+		assertEquals(true, Warmup2.noTriples(num4));
+		
+		int[] num5 = {1, 1, 1};
+		assertEquals(false, Warmup2.noTriples(num5));
+	}
+	
+	
+	@Test
+	public void array667(){
+		
+		int[] nums0 = {6, 6, 2, 6, 7};
+		assertEquals(2, Warmup2.array667(nums0));
+		
+		int[] nums1 = {6,6,2};
+		assertEquals(1, Warmup2.array667(nums1));
+		
+		int[] nums2 = {6,6,2,6};
+		assertEquals(1, Warmup2.array667(nums2));
+		
+		int[] nums3 = {6,7,2,6};
+		assertEquals(1, Warmup2.array667(nums3));
+		
+		int[] nums4 = {0};
+		assertEquals(0, Warmup2.array667(nums4));
+		
+		int[] nums5 = {3,6,6,7};
+		assertEquals(2, Warmup2.array667(nums5));
+		
+		int[] nums6 = {};
+		assertEquals(0, Warmup2.array667(nums6));
+	}
+	
+	@Test
+	public void stringYak(){
+		assertEquals("pak", Warmup2.stringYak("yakpak"));
+		assertEquals("pak", Warmup2.stringYak("pakyak"));
+		assertEquals("123ya", Warmup2.stringYak("yak123ya"));
+		assertEquals("", Warmup2.stringYak(""));
+	}
+	
+	@Test
+	public void altPairs(){
+		assertEquals("kien", Warmup2.altPairs("kitten"));
+		assertEquals("Chole", Warmup2.altPairs("Chocolate"));
+		assertEquals("Congrr", Warmup2.altPairs("CodingHorror"));
+	}
 	
 	@Test
 	public void stringX(){

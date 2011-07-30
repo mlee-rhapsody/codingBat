@@ -2,10 +2,88 @@ package javalearning;
 
 public class Warmup2 {
 	
+	public static boolean has271(int[] nums){
+		if(nums.length<3)
+			return false;
+		
+		for(int i=0; i<=nums.length-3; i++){
+			int a = nums[i] + 5;
+			int b = nums[i+1];
+			int c = nums[i]-1;
+			int d = nums[i+2];
+			if(a == b && (c == d) )
+				return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean noTriples(int[] nums){
+		if(nums.length<3)
+			return true;
+		
+		boolean sentinal=true;
+		
+		
+		for(int i=0; i <= nums.length-3; i++){
+			if(nums[i]==nums[i+1] && nums[i+1]==nums[i+2] )
+				sentinal = false;
+		}
+		
+		return sentinal;
+	}
+	
+	public static int array667(int[] nums){
+
+		int count = 0;
+		
+		if(nums.length<=1)
+			return 0;
+		
+		for(int i=0; i<nums.length-1; i++){
+			if(nums[i]==6 && (nums[i+1]==6 || nums[i+1]==7))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	public static String stringYak(String str){
+
+		if(str.isEmpty())
+			return "";
+				
+		if(str.length()<3)
+			return str;
+		
+		String buf = "";
+		String[] split = str.split("yak");
+		for(int i=0; i<split.length; i++){
+			buf += split[i];
+		}
+		
+		return buf;
+	}
+	
 	public static String altPairs(String str){
+		int count = 0;
+		String buf = "";
 		
+		if(str.isEmpty())
+			return "";
 		
-		return "";
+		do{
+			if(count >= str.length()) break;
+			buf += str.charAt(count++);
+			
+			if(count >= str.length()) break;
+			buf += str.charAt(count++);
+			
+			count++;
+			count++;
+		}while(true);
+		
+		return buf;
 	}
 	
 	public static String stringX(String str){
