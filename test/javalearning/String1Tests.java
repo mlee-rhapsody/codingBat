@@ -13,6 +13,102 @@ public class String1Tests {
 	}
 	
 	@Test
+	public void withoutX2(){
+		assertEquals("", string1.withoutX2(""));
+		
+		
+		
+		assertEquals("", string1.withoutX2("x"));
+		assertEquals("a", string1.withoutX2("a"));
+		
+		assertEquals("aa", string1.withoutX2("aa"));
+		assertEquals("", string1.withoutX2("xx"));
+		
+		
+		assertEquals("a", string1.withoutX2("xa"));
+		assertEquals("a", string1.withoutX2("ax"));
+		
+		assertEquals("Hello", string1.withoutX2("xxHello"));
+		
+		assertEquals("bHello", string1.withoutX2("xbHello"));
+		assertEquals("bHello", string1.withoutX2("bxHello"));
+		
+	}
+	
+	
+	@Test
+	public void withoutX(){
+		assertEquals("", string1.withoutX(""));
+		
+		assertEquals("", string1.withoutX("x"));
+		
+		assertEquals("", string1.withoutX("xx"));
+		
+		assertEquals("Hi", string1.withoutX("xHix"));
+		assertEquals("bHib", string1.withoutX("bHib"));
+		
+		assertEquals("Hello", string1.withoutX("xHello"));
+		
+		assertEquals("Hello", string1.withoutX("Hellox"));
+	}
+	
+	@Test
+	public void startWord(){
+		assertEquals("", string1.startWord("", ""));
+		assertEquals("", string1.startWord("", "aaa"));
+		assertEquals("", string1.startWord("aaa", ""));
+		
+		assertEquals("h", string1.startWord("hippo", "i"));
+		
+		assertEquals("hi", string1.startWord("hippo", "hi"));
+		
+		assertEquals("hip", string1.startWord("hippo", "xip"));
+	}
+	
+	
+	@Test
+	public void deFront(){
+		assertEquals("", string1.deFront(""));
+		assertEquals("a", string1.deFront("a"));
+		assertEquals("", string1.deFront("z"));
+		
+		assertEquals("ab", string1.deFront("ab"));
+		assertEquals("", string1.deFront("zz"));
+		assertEquals("b", string1.deFront("zb"));
+		assertEquals("a", string1.deFront("az"));
+		
+		assertEquals("va", string1.deFront("java"));
+		assertEquals("aay", string1.deFront("away"));
+	}
+	
+	@Test
+	public void without2(){
+		assertEquals("", string1.without2(""));
+		assertEquals("a", string1.without2("a"));
+		assertEquals("", string1.without2("hi"));
+		assertEquals("HelloHi", string1.without2("HelloHi"));
+	}
+	
+	
+	@Test
+	public void extraFont(){
+		assertEquals("", string1.extraFont(""));
+		assertEquals("aaa", string1.extraFont("a"));
+		assertEquals("ababab", string1.extraFont("ab"));
+		assertEquals("hehehe", string1.extraFont("hello"));
+	}
+	
+	
+	@Test
+	public void minCat(){
+		assertEquals("", string1.minCat("", ""));
+		assertEquals("HiHi", string1.minCat("Hi", "Hi"));
+		assertEquals("loHi", string1.minCat("Hello", "Hi"));
+		assertEquals("javaello", string1.minCat("java", "hello"));
+	}
+	
+	
+	@Test
 	public void frontAgain(){
 		assertEquals(false, string1.frontAgain(""));
 		assertEquals(false, string1.frontAgain("e"));
