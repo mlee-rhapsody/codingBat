@@ -16,10 +16,12 @@ public class Array1 {
 		print(tst.front11(a, b));
 	}
 
+	@SuppressWarnings("unused")
 	private static void print(int maxTriple) {
 		System.out.println(maxTriple);
 	}
 
+	@SuppressWarnings("unused")
 	private static void print(boolean double23) {
 		System.out.println(double23);
 	}
