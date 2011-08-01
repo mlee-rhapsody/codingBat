@@ -6,6 +6,26 @@ public class Recursion1 {
 	private Recursion1() {
 	}
 	
+	public int countPairs(String str){
+		if(str.length()==1 || str.isEmpty())
+			return 0;
+		
+		String head = str.charAt(0)+ "";
+		String body = str.substring(1);
+		
+		int num = 0;
+		if(body.length()>1){
+			String pair = body.charAt(1)+"";
+			if(head.equals(pair)){
+				num = 1;
+			}
+		}
+		
+		return num + countPairs(body);
+	}
+	
+	
+	
 	public String endX(String str){
 		
 		if(str.length()==1 || str.isEmpty())

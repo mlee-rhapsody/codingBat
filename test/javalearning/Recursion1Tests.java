@@ -13,6 +13,15 @@ public class Recursion1Tests {
 	}
 	
 	@Test
+	public void countPairs(){
+		assertEquals(0, test.countPairs(""));
+		assertEquals(1, test.countPairs("axa"));
+		assertEquals(2, test.countPairs("axax"));
+	}
+	
+	
+	
+	@Test
 	public void endX(){
 		
 		assertEquals("", test.endX(""));
@@ -183,13 +192,18 @@ public class Recursion1Tests {
 		assertEquals(2, test.factorial(2));
 		assertEquals(6, test.factorial(3));
 	}
+
+	//Test helper class for test param that take arrays.
+	//Using variable argument we use them to
+	//create anonymous like arrays.
+	//
+	// example:
+	// assertEquals(true, test.array6(Arr.input(1,2,3,4,5,6), 0));
 	
 	static class Arr{
 		public static int[] input(int... number){
 			return number;
 		}
-		
-		
 	}
 
 }
