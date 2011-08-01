@@ -6,10 +6,48 @@ public class Recursion1 {
 	private Recursion1() {
 	}
 	
+	public String endX(String str){
+		
+		if(str.length()==1 || str.isEmpty())
+			return str;
+		
+		String head = str.charAt(0)+"";
+		String body = str.substring(1);
+		
+		if(head.equals("x")){
+			return endX(body)+head;
+		}else{
+			return head + endX(body);
+		}
+	}
+	
+	
+	public String pairStar(String str){
+		
+		if(str.length()==1 || str.isEmpty())
+			return str;
+		
+		String head = str.charAt(0)+"";
+		String body = str.substring(1);
+
+		String next = "";
+		if(head.equals(body.substring(0, 1))){
+			next = head + "*";
+		}else{
+			next = head;
+		}
+		return next + pairStar(body);
+	}
+	
+	
 	public String allStar(String str){
+		if(str.length()==1 || str.isEmpty())
+			return str;
 		
+		String head = str.charAt(0)+"*";
+		String body = str.substring(1);
 		
-		return allStar(str);
+		return head + allStar(body);
 	}
 	
 	public boolean array220(int[] nums, int index){

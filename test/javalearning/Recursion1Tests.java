@@ -13,11 +13,41 @@ public class Recursion1Tests {
 	}
 	
 	@Test
+	public void endX(){
+		
+		assertEquals("", test.endX(""));
+		assertEquals("rex", test.endX("xre"));
+		assertEquals("hixxxx", test.endX("xxhixx"));
+		assertEquals("hihixxx", test.endX("xhixhix"));
+		
+	}
+	
+	
+	@Test
+	public void pairStar(){
+		assertEquals("", test.pairStar(""));
+		assertEquals("ab", test.pairStar("ab"));
+		assertEquals("a*a", test.pairStar("aa"));
+		
+		assertEquals("hel*lo", test.pairStar("hello"));
+		assertEquals("a*a*a*a", test.pairStar("aaaa"));
+	}
+	
+	
+	@Test
+	public void allStar(){
+		assertEquals("", test.allStar(""));
+		assertEquals("a*b", test.allStar("ab"));
+		assertEquals("a*b*c", test.allStar("abc"));
+		assertEquals("h*e*l*l*o", test.allStar("hello"));
+	}
+	
+	
+	@Test
 	public void array220(){
 		assertEquals(true, test.array220(Arr.input(1, 2, 20), 0));
 		assertEquals(true, test.array220(Arr.input(3, 30), 0));
 		assertEquals(false, test.array220(Arr.input(3), 0));
-		
 	}
 	
 	@Test
