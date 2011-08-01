@@ -5,7 +5,143 @@ public class Recursion1 {
 
 	private Recursion1() {
 	}
+	
+	public String allStar(String str){
+		
+		
+		return allStar(str);
+	}
+	
+	public boolean array220(int[] nums, int index){
+		
+		if(index == nums.length)
+			return false;
+		
+		if(index!=0){
+			int prevNumber = nums[index-1];
+			int currentNumber = nums[index];
+			if(currentNumber == prevNumber*10)
+				return true;
+		}
+		return array220(nums, ++index);
+	}
+	
+	
+	public int array11(int[] nums, int index){
+		
+		if(index == nums.length)
+			return 0;
+		int add = 0;
+		if(nums[index++]==11){
+			add = 1;
+		}else{
+			add = 0;
+		}
+		
+		return add + array11(nums, index);
+	}
+	
+	public boolean array6(int[] nums, int index){
+		if(index==nums.length)
+			return false;
+		
+		if(nums[index]==6)
+			return true;
+		
+		return array6(nums, ++index);
+	}
+	
+	public String noX(String str){
+		
+		if(str.contains("x")==false)
+			return str;
+		
+		int xIndex = str.indexOf("x");
+		String next = "";
+		if(xIndex == 0){
+			String right = str.substring(xIndex+"x".length());
+			next = right;
+		}else{
+			String left = str.substring(0, xIndex);
+			String right = str.substring(xIndex+"x".length());
+			next = left + right;
+		}
+		
+		return noX(next);
+	}
+	
+	public String changePi(String str){
+		
+		if(str.contains("pi") == false)
+			return str;
+		
+		int piIndex = str.indexOf("pi");
+		String next = "";
+		
+		if(piIndex == 0){
+			String rightSide = str.substring(piIndex+"pi".length());
+			next = "3.14" + rightSide;
+		}else{
+			String leftSide = str.substring(0, piIndex);
+			String rightSide = str.substring(piIndex+"pi".length());
+			next = leftSide + "3.14"+rightSide;
+		}
 
+		return changePi(next);
+	}
+	
+	
+	public String changeXY(String str){
+		
+		boolean containsX = str.contains("x");
+		if(containsX == false)
+			return str;
+		
+		int xIndex = str.indexOf("x");
+		char[] charArray = str.toCharArray();
+		charArray[xIndex] ='y';
+		
+		return changeXY(new String(charArray));
+	}
+	
+	public int countHi(String str){
+		
+		boolean contains = str.contains("hi");
+		
+		if(contains == false)
+			return 0;
+		
+		int hiIndex = str.indexOf("hi");
+		String next =str.substring(hiIndex+"hi".length());
+		
+		return 1 + countHi(next);
+	}
+	
+	public int countX(String str){
+		if(str.isEmpty())
+			return 0;
+		
+		String substring = str.substring(1);
+		String curentChar = str.substring(0, 1);
+		
+		int num;
+		if(curentChar.equals("x"))
+			num = 1;
+		else
+			num = 0;
+		
+		
+		return num + countX(substring);
+	}
+	
+	
+	public int powerN(int base, int n){
+		if(n==1)
+			return base;
+		
+		return base*powerN(base, n-1);
+	}
+	
 	public int count8(int n){
 		if(n==0)
 			return 0;
@@ -13,7 +149,21 @@ public class Recursion1 {
 		int digit = n%10;
 		int left = n/10;
 		
+		int num=0;
+		int check = left %10;
 		
+		
+		if(digit==8 && check==8){
+			num = 2;
+		}else
+			num =1;
+		
+		
+		if(digit !=8)
+			num = 0;
+		
+		
+		return num + count8(left);
 		
 	}
 	
