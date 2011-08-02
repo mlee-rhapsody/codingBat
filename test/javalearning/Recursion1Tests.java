@@ -13,13 +13,21 @@ public class Recursion1Tests {
 	}
 	
 	@Test
+	public void countABC(){
+		assertEquals(0, test.countAbc(""));
+		assertEquals(1, test.countAbc("xabc"));
+		assertEquals(1, test.countAbc("abc"));
+		assertEquals(2, test.countAbc("abc__abc"));
+		assertEquals(4, test.countAbc("abc_abc_abc_abc"));
+		
+	}
+	
+	@Test
 	public void countPairs(){
 		assertEquals(0, test.countPairs(""));
 		assertEquals(1, test.countPairs("axa"));
 		assertEquals(2, test.countPairs("axax"));
 	}
-	
-	
 	
 	@Test
 	public void endX(){

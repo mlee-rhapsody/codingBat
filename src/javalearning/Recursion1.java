@@ -6,6 +6,28 @@ public class Recursion1 {
 	private Recursion1() {
 	}
 	
+	
+	public int countAbc(String str){
+		
+		if(str.contains("abc")==false)
+			return 0;
+		
+		if(str.equals("abc"))
+			return 1;
+		
+		int abcIndex = str.indexOf("abc");
+		
+		if(abcIndex == 0){
+			String right = str.substring("abc".length());
+			return 1 + countAbc(right);
+		}else{
+			String left = str.substring(0, abcIndex);
+			String right = str.substring(abcIndex+"abc".length());
+			String next = right+left;
+			return 1 + countAbc(next);
+		}
+	}
+	
 	public int countPairs(String str){
 		if(str.length()==1 || str.isEmpty())
 			return 0;

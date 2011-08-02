@@ -63,6 +63,10 @@ public class Array1 {
 	public int[] make2(int[] a, int[] b){
 		int[] copy = new int[2];
 		
+		
+		if(a.length==0 && b.length==0)
+			return a;
+		
 		if(a.length >=2){
 			copy[0] = a[0];
 			copy[1] = a[1];

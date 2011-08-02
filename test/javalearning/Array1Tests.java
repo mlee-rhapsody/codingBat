@@ -7,6 +7,7 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import utility.Arr;
 
 public class Array1Tests {
 
@@ -39,47 +40,43 @@ public class Array1Tests {
 	@Test
 	public void unlucky1(){
 		
-		int[] empty = {};
-		int[] one3	= {1,3};
-		int[] three = {1, 3, 2};
-		int[] threeA = {1, 1, 3};
-		int[] threeB = {1, 1, 1};
-		int[] fail = {1, 1, 1, 3, 1};
+		assertEquals(false, array1.unlucky1(Arr.integer()));
+		assertEquals(false, array1.unlucky1(Arr.integer(1)));
+		assertEquals(true, array1.unlucky1(Arr.integer(1,3)));
+		assertEquals(false, array1.unlucky1(Arr.integer(7,7)));
 		
-		assertEquals(false, array1.unlucky1(empty));
-		assertEquals(false, array1.unlucky1(nums6));
-		assertEquals(true, array1.unlucky1(one3));
-		assertEquals(false, array1.unlucky1(nums7));
+		assertEquals(true, array1.unlucky1(Arr.integer(1,3,2)));
+		assertEquals(true, array1.unlucky1(Arr.integer(1, 1, 3)));
+		assertEquals(false, array1.unlucky1(Arr.integer(1, 1, 1)));
 		
-		assertEquals(true, array1.unlucky1(three));
-		assertEquals(true, array1.unlucky1(threeA));
-		assertEquals(false, array1.unlucky1(threeB));
-		
-		assertEquals(false, array1.unlucky1(fail));
-		
-		
+		assertEquals(false, array1.unlucky1(Arr.integer(1, 1, 1, 3, 1)));
 	}
 	
-
-	@Ignore
 	@Test
 	public void front11(){
-		
+		assertTrue(Arrays.equals(Arr.integer(1,2), array1.front11(Arr.integer(1), Arr.integer(2))));
+		assertTrue(Arrays.equals(Arr.integer(1), array1.front11(Arr.integer(1,7), Arr.integer())));
+		assertTrue(Arrays.equals(Arr.integer(1,7), array1.front11(Arr.integer(1,2,3), Arr.integer(7,8,9))));
 	}
 	
 	
-	@Ignore
+	
 	@Test
 	public void make2(){
-		
+		assertTrue(Arrays.equals(Arr.integer(), array1.make2(Arr.integer(), Arr.integer())));
+		assertTrue(Arrays.equals(Arr.integer(1,2), array1.make2(Arr.integer(), Arr.integer(1,2))));
+		assertTrue(Arrays.equals(Arr.integer(4,5), array1.make2(Arr.integer(4,5), Arr.integer(1,2,3))));
+		assertTrue(Arrays.equals(Arr.integer(4,5), array1.make2(Arr.integer(4,5), Arr.integer(1,2,3))));
 	}
 	
 	
 	
 	@Test
 	public void fix23(){
-		int[] b = {1, 2, 0};
-		assertTrue(Arrays.equals(b, array1.fix23(num0)));
+		assertTrue(Arrays.equals(Arr.integer(1,2,0), array1.fix23(Arr.integer(1,2,3))));
+		assertTrue(Arrays.equals(Arr.integer(2,0,5), array1.fix23(Arr.integer(2,3,5))));
+		assertTrue(Arrays.equals(Arr.integer(1,2,1), array1.fix23(Arr.integer(1,2,1))));
+		
 	}
 	
 	@Test
@@ -101,43 +98,51 @@ public class Array1Tests {
 		
 		assertTrue(Arrays.equals(b, array1.makeMiddle(a)));
 	}
-	@Ignore
+	
 	@Test
 	public void swapEnds(){
-		
+		assertTrue(Arrays.equals(Arr.integer(1), array1.swapEnds(Arr.integer(1))));
+		assertTrue(Arrays.equals(Arr.integer(4,2,3,1), array1.swapEnds(Arr.integer(1,2,3,4))));
+		assertTrue(Arrays.equals(Arr.integer(1,2,3), array1.swapEnds(Arr.integer(3,2,1))));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void frontPiece(){
-		
+		assertTrue(Arrays.equals(Arr.integer(1,2), array1.frontPiece(Arr.integer(1,2))));
+		assertTrue(Arrays.equals(Arr.integer(1), array1.frontPiece(Arr.integer(1))));
+		assertTrue(Arrays.equals(Arr.integer(1,2), array1.frontPiece(Arr.integer(1,2,3))));
 	}
 	
-	@Ignore
 	@Test
 	public void maxTriple(){
-		
+		assertEquals(3, array1.maxTriple(Arr.integer(1,2,3)));
+		assertEquals(5, array1.maxTriple(Arr.integer(1,5,3)));
+		assertEquals(6, array1.maxTriple(Arr.integer(6,6,6)));
 	}
 	
 	
-	@Ignore
 	@Test
 	public void midThree(){
-		
+		assertTrue(Arrays.equals(Arr.integer(1,2,3), array1.midThree(Arr.integer(1,2,3))));
+		assertTrue(Arrays.equals(Arr.integer(2,3,4), array1.midThree(Arr.integer(1,2,3,4,5))));
+		assertTrue(Arrays.equals(Arr.integer(7,5,3), array1.midThree(Arr.integer(8,6,7,5,3,0,9))));
 	}
 	
-	
-	@Ignore
 	@Test
 	public void biggerTwo(){
-		
+		assertTrue(Arrays.equals(Arr.integer(3,4), array1.biggerTwo(Arr.integer(1,2),Arr.integer(3,4))));
+		assertTrue(Arrays.equals(Arr.integer(3,4), array1.biggerTwo(Arr.integer(3,4),Arr.integer(1,2))));
+		assertTrue(Arrays.equals(Arr.integer(1,2), array1.biggerTwo(Arr.integer(1,1),Arr.integer(1,2))));
 	}
 	
 	
 	@Ignore
 	@Test
 	public void start1(){
-		
+		assertEquals(2, array1.start1(Arr.integer(1,2,3),Arr.integer(1,3)));
+		assertEquals(1, array1.start1(Arr.integer(7,2,3),Arr.integer(1)));
+		assertEquals(1, array1.start1(Arr.integer(1,2),Arr.integer()));
 	}
 	
 	@Test
@@ -260,8 +265,6 @@ public class Array1Tests {
 		assertEquals(true, array1.sameFirstLast(nums5));
 		
 		assertEquals(true, array1.sameFirstLast(nums7));
-		
-		
 	}
 	
 	@Test
