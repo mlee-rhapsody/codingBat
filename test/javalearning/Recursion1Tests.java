@@ -13,6 +13,73 @@ public class Recursion1Tests {
 	}
 	
 	@Test
+	public void strDist(){
+		assertEquals(9, test.strDist("catcowcat", "cat"));
+		assertEquals(3, test.strDist("catcowcat", "cow"));
+		assertEquals(9, test.strDist("cccatcowcatxx", "cat"));
+	}
+	
+	@Test
+	public void strCopies(){
+		assertEquals(true, test.strCopies("iiijjj", "ii", 2));
+		assertEquals(true, test.strCopies("catcowcat", "cat", 2));
+		assertEquals(false, test.strCopies("catcowcat", "cow", 2));
+		assertEquals(true, test.strCopies("catcowcat", "cow", 1));
+		assertEquals(true, test.strCopies("", "", 0));
+	}
+	
+	@Test
+	public void strCount(){
+		assertEquals(2, test.strCount("catcowcat", "cat"));
+		assertEquals(1, test.strCount("catcowcat", "cow"));
+		assertEquals(0, test.strCount("catcowcat", "dog"));
+	}
+	
+	@Test
+	public void nestParen(){
+		assertEquals(true, test.nestParen(""));
+		assertEquals(true, test.nestParen("(())"));	
+		assertEquals(true, test.nestParen("((()))"));
+		assertEquals(false, test.nestParen("(((x))"));
+	}
+	
+	
+	@Test
+	public void parenBit(){
+		assertEquals("(abc)", test.parenBit("xyz(abc)123"));
+		assertEquals("(hello)", test.parenBit("x(hello)"));
+		assertEquals("(xy)", test.parenBit("(xy)1"));
+	}
+	
+	
+	@Test
+	public void countHi2(){
+		assertEquals(0, test.countHi2(""));
+		assertEquals(0, test.countHi2("xhixhi"));
+		assertEquals(3, test.countHi2("hi_hi_hhi"));
+		assertEquals(3, test.countHi2("hihihhi"));
+		assertEquals(2, test.countHi2("ahibhi"));
+	}
+	
+	@Test
+	public void stringClean(){
+		assertEquals("", test.stringClean(""));
+		assertEquals("Helo", test.stringClean("Hello"));
+		assertEquals("yza", test.stringClean("yyzzza"));
+	}
+	
+	@Test
+	public void count11(){
+		assertEquals(0, test.count11(""));
+		assertEquals(1, test.count11("111"));
+		assertEquals(2, test.count11("1111"));
+		assertEquals(2, test.count11("11011"));
+		assertEquals(3, test.count11("abc11x11x11"));
+	}
+	
+	
+	
+	@Test
 	public void countABC(){
 		assertEquals(0, test.countAbc(""));
 		assertEquals(1, test.countAbc("xabc"));
