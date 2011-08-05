@@ -1,7 +1,5 @@
 package javalearning;
 
-import java.util.Arrays;
-
 public class Recursion2 {
 	final static Recursion2 INSTANCE = new Recursion2();
 	
@@ -9,12 +7,10 @@ public class Recursion2 {
 	}
 	
 	public boolean groupSum(int start, int[] nums, int target){
-		
 		// Base case: if there are no numbers left, then there is a
 		// solution only if target is 0.
 		
 		if(start>=nums.length){
-			System.out.printf("start: %d >= nums.length(%d)%n", start, nums.length);
 			return (target == 0);
 		}
 		
@@ -24,22 +20,18 @@ public class Recursion2 {
 		
 		// Recursive call trying the case that nums[start] is chosen --
 		// subtract it from target in the call.
-		if(groupSum(start + 1, nums, target - nums[start])){
-			System.out.printf("start + 1: %d , nums: %s, target - nums[start](%d)%n", 
-					start + 1, Arrays.toString(nums), target - nums[start]);
+		boolean groupSum = groupSum(start + 1, nums, target - nums[start]);
+		if(groupSum){
 			return true;
 		}
 		
-		if(groupSum(start + 1, nums, target)){
-			System.out.printf("start + 1: %d , nums: %s, target(%d)%n", 
-					start + 1, Arrays.toString(nums), target);
+		boolean groupSum2 = groupSum(start + 1, nums, target);
+		if(groupSum2){
+
 			return true;
 		}
 		
 		// If neither of the above worked, it's not possible.
-		System.out.println("false");
 		return false;
-		
-		
 	}
 }
