@@ -13,6 +13,115 @@ public class Logic1Tests {
 	}
 	
 	@Test
+	public void sumLimit(){
+		assertEquals(5, test.sumLimit(2, 3));
+		assertEquals(8, test.sumLimit(8, 3));
+		assertEquals(9, test.sumLimit(8, 1));
+	}
+	
+	@Test
+	public void shareDigit(){
+		assertEquals(true, test.shareDigit(12, 23));
+		assertEquals(false, test.shareDigit(12, 34));
+		assertEquals(true, test.shareDigit(12, 41));
+		assertEquals(true, test.shareDigit(21, 41));
+	}
+	
+	@Test
+	public void blueTicket(){
+		assertEquals(10, test.blueTicket(9, 1, 0));
+		assertEquals(0, test.blueTicket(9, 2, 0));
+		assertEquals(10, test.blueTicket(6, 1, 4));
+	}
+	
+	@Test
+	public void greenTicket(){
+		assertEquals(0, test.greenTicket(1, 2, 3));
+		assertEquals(20, test.greenTicket(2, 2, 2));
+		assertEquals(10, test.greenTicket(1, 1, 2));
+	}
+	
+	@Test
+	public void redTicket(){
+		assertEquals(10, test.redTicket(2, 2, 2));
+		assertEquals(0, test.redTicket(2, 2, 1));
+		assertEquals(5, test.redTicket(0, 0, 0));
+	}
+	
+	@Test
+	public void maxMod5(){
+		assertEquals(3, test.maxMod5(2, 3));
+		assertEquals(6, test.maxMod5(6, 2));
+		assertEquals(3, test.maxMod5(3, 2));
+	}
+	
+	@Test
+	public void withoutDoubles(){
+		assertEquals(5, test.withoutDouble(2, 3, true));
+		assertEquals(7, test.withoutDouble(3, 3, true));
+		assertEquals(6, test.withoutDouble(3, 3, false));
+		assertEquals(10, test.withoutDouble(5, 5, false));
+		assertEquals(11, test.withoutDouble(5, 5, true));
+	}
+	
+	@Test
+	public void lessBy10(){
+		assertEquals(false, test.lessBy10(10, 7, 1));
+		assertEquals(true, test.lessBy10(1, 7, 11));
+		assertEquals(false, test.lessBy10(1, 7, 10));
+		assertEquals(true, test.lessBy10(11, 1, 7));
+	}
+	
+	@Test
+	public void lastDigit(){
+		assertEquals(true, test.lastDigit(23, 19, 13));
+		assertEquals(false, test.lastDigit(23, 19, 12));
+		assertEquals(true, test.lastDigit(23, 19, 3));
+	}
+	
+	@Test
+	public void inOrderEqual(){
+		assertEquals(true, test.inOrderEqual(2, 5, 11, false));
+		assertEquals(true, test.inOrderEqual(5, 6, 7, false));
+		assertEquals(true, test.inOrderEqual(5, 5, 5, true));
+		assertEquals(false, test.inOrderEqual(5, 5, 5, false));
+		assertEquals(false, test.inOrderEqual(5, 4, 3, false));
+	}
+	
+	@Test
+	public void inOrder(){
+		assertEquals(true, test.inOrder(1, 2, 4, false));
+		assertEquals(false, test.inOrder(1, 2, 1, false));
+		assertEquals(true, test.inOrder(1, 1, 2, true));
+	}
+	
+	
+	@Test
+	public void twoAsOne(){
+		assertEquals(true, test.twoAsOne(0, 0, 0));
+		assertEquals(true, test.twoAsOne(1, 2, 3));
+		assertEquals(true, test.twoAsOne(3, 1, 2));
+		assertEquals(false, test.twoAsOne(3, 2, 2));
+	}
+	
+	@Test
+	public void teaParty(){
+		assertEquals(1, test.teaParty(6, 8));
+		assertEquals(0, test.teaParty(3, 8));
+		assertEquals(2, test.teaParty(20, 6));
+		assertEquals(2, test.teaParty(6, 20));
+	}
+	
+	@Test
+	public void answerCell(){
+		assertEquals(false, test.answerCell(true, false, false));
+		assertEquals(true, test.answerCell(false, false, false));
+		assertEquals(false, test.answerCell(false, false, true));
+		assertEquals(false, test.answerCell(false, false, true));
+		assertEquals(false, test.answerCell(true, false, true));
+	}
+	
+	@Test
 	public void teenSum(){
 		assertEquals(7, test.teenSum(3, 4));
 		assertEquals(19, test.teenSum(10, 13));
