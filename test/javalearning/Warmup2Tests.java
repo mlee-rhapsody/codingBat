@@ -23,6 +23,9 @@ public class Warmup2Tests {
 		int[] num4 = {2,7,3};
 		assertEquals(true, Warmup2.has271(num4));
 		
+		int[] num5 = {2,7,4};
+		assertEquals(false, Warmup2.has271(num5));
+		
 	}
 	
 	@Test

@@ -6,13 +6,16 @@ public class Warmup2 {
 		if(nums.length<3)
 			return false;
 		
-		for(int i=0; i<=nums.length-3; i++){
-			int a = nums[i] + 5;
-			int b = nums[i+1];
-			int c = nums[i]-1;
-			int d = nums[i+2];
-			if(a == b && (c == d) )
+		int a, b, c;
+		
+		for(int i=0; i<nums.length-2; i++){
+			a = nums[i];
+			b = nums[i+1];
+			c = nums[i+2] - (a-1);
+			
+			if(a == (b-5) && Math.abs(c)<=2 ){
 				return true;
+			}
 		}
 		
 		return false;
