@@ -5,11 +5,58 @@ public class Logic2 {
 
 	private Logic2() {
 	}
+
+	public boolean closeFar(int a, int b, int c){
+	
+		boolean isCloseAB = isClose(a,b);
+		boolean isFarABC = isFar(a,b,c);
+		if(isCloseAB&&isFarABC)
+			 return true;
+		 
+		boolean isCloseAC = isClose(a,c);
+		boolean isFarACB = isFar(a,c,b);
+		if(isCloseAC&&isFarACB)
+			 return true;
+		 
+		 return false;
+		 
+	}
+	
+	public boolean isFar(int a, int other, int close){
+		return Math.abs(close - a)>=2 && Math.abs(close - other)>=2; 
+	}
+	
+	public boolean isClose(int num1, int num2){
+		return Math.abs(num2 - num1)<=1;
+	}
+	
+	
+	public static boolean logicalXOR(boolean x, boolean y) {
+	    return ( ( x || y ) && ! ( x && y ) );
+	}
 	
 	public int roundSum(int a, int b, int c){
-		
-		return 0;
+		return round10(a) + round10(b) + round10(c);
 	}
+	
+	public int round10(int num){
+		String digit = Integer.toString(num);
+		String lastStrDigit = digit.substring(digit.length()-1);
+		int lastDigit = Integer.parseInt(lastStrDigit);
+		
+		String preStrDigit="0";
+		
+		if(num>=10)
+			preStrDigit = digit.substring(0, digit.length()-1);
+		
+		int preDigit = Integer.parseInt(preStrDigit+"0");
+
+		if(lastDigit>=5)
+			preDigit += 10;
+		
+		return preDigit;
+	}
+	
 	
 	public int noTeenSum(int a, int b, int c){
 		return fixTeen(a)+ fixTeen(b)+fixTeen(c);
