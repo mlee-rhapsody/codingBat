@@ -1,9 +1,69 @@
 package javalearning;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Logic2 {
 	final static Logic2 INSTANCE = new Logic2();
 
 	private Logic2() {
+	}
+	
+	public int makeChocolate(int small, int big, int goal){
+		
+		if((small + big*5) < goal)
+			return -1;
+		
+		
+		int bigTarget = goal / 5;
+		
+		if(bigTarget>big)
+			bigTarget = big;
+		
+		int smallTarget = goal - 5*bigTarget;
+		if(smallTarget>small || smallTarget<0)
+			return -1;
+		
+		int materialBalance = goal - 5*bigTarget - smallTarget;
+		if(materialBalance != 0)
+			return -1;
+		
+		return smallTarget;
+	}
+	
+	public boolean evenlySpaced(int a, int b, int c){
+		
+		if(a==b && b==c)
+			return true;
+		
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(a);
+		list.add(b);
+		list.add(c);
+		Collections.sort(list);
+		
+		int deltaA = list.get(1) - list.get(0);
+		int deltaB = list.get(2) - list.get(1);
+		if(deltaA == deltaB)
+			return true;
+		
+		return false;
+	}
+	
+	public int blackjack(int a, int b){
+		if(a>21 && b>21)
+			return 0;
+		if(a>21)
+			a=0;
+		
+		if(b>21)
+			b=0;
+		
+		if(a>b)
+			return a;
+		
+		return b;
 	}
 
 	public boolean closeFar(int a, int b, int c){

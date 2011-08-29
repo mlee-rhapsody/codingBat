@@ -15,6 +15,33 @@ public class Logic2Tests {
 	}
 	
 	@Test
+	public void makeChocolate(){
+		assertEquals(5, tst.makeChocolate(6, 1, 10));
+		
+//		assertEquals(2, tst.makeChocolate(6, 2, 7));
+//		assertEquals(4, tst.makeChocolate(4, 1, 9));
+//		assertEquals(-1, tst.makeChocolate(4, 1, 10));
+//		assertEquals(2, tst.makeChocolate(4, 1, 7));
+	}
+	
+	
+	@Test
+	public void evenlySpaced(){
+		assertEquals(true, tst.evenlySpaced(2, 4, 6));
+		assertEquals(true, tst.evenlySpaced(4, 6, 2));
+		assertEquals(false, tst.evenlySpaced(4, 6, 3));
+	}
+	
+	
+	@Test
+	public void blackjack(){
+		assertEquals(21, tst.blackjack(19, 21));
+		assertEquals(21, tst.blackjack(21, 19));
+		assertEquals(19, tst.blackjack(22, 19));
+		assertEquals(0, tst.blackjack(22, 22));
+	}
+	
+	@Test
 	public void closeFar(){
 		assertEquals(true, tst.closeFar(1, 2, 10));
 		assertEquals(true, tst.closeFar(1, 2, 10));
