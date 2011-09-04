@@ -8,187 +8,231 @@ public class Array2 {
 	private Array2() {
 	}
 
-	public int[] zeroMax(int[] nums){
+	public int[] evenOdd(int[] nums) {
+
+		int oddCount = 0;
+		int evenCount = 0;
+
+		for (int i = 0; i < nums.length; i++) {
+			if(nums[i]%2==0)
+				evenCount++;
+		}
+		oddCount = nums.length - evenCount;
 		
-		if(nums.length==0)
-			return nums;
-		
+		int[] oddArray = new int[oddCount];
+		int[] evenArray = new int[evenCount];
 		int[] copy = new int[nums.length];
 		
-		System.out.println(nums.length);
-		System.out.println(Arrays.toString(copy));
-		return copy;
-	}
-	
-	
-	public int[] withoutTen(int[] nums){
-		int[] copy = new int[nums.length];
-		
-		for(int i=0; i<nums.length; i++){
-			copy[i]=0;
+		int evenIndex = 0;
+		int oddIndex  = 0;
+		for(int i=0; i< nums.length; i++){
+			if(nums[i]%2==0){
+				evenArray[evenIndex++] = nums[i];
+			}else{
+				oddArray[oddIndex++] = nums[i];
+			}
+				
 		}
 		
+		int copyIndex = 0;
+		for(int num: evenArray){
+			copy[copyIndex++] = num;
+		}
+		for(int num: oddArray){
+			copy[copyIndex++] = num;
+		}
+		return copy;
+	}
+
+	public int[] zeroMax(int[] nums) {
+		if (nums.length < 2)
+			return nums;
+
+		int[] copy = new int[nums.length];
+
+		// find some zeroes
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 0) {
+				// find the largest odd value to right of current zero
+				int maxOdd = nums[i];
+				for (int j = i; j < nums.length; j++) {
+					if (nums[j] % 2 != 0 && nums[j] > maxOdd)
+						maxOdd = nums[j];
+				}
+				copy[i] = maxOdd;
+			} else
+				copy[i] = nums[i];
+		}
+
+		return copy;
+	}
+
+	public int[] withoutTen(int[] nums) {
+		int[] copy = new int[nums.length];
+
+		for (int i = 0; i < nums.length; i++) {
+			copy[i] = 0;
+		}
+
 		int tenCount = 0;
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]!=10){
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != 10) {
 				copy[tenCount] = nums[i];
 				tenCount++;
 			}
 		}
 		return copy;
 	}
-	
-	public int[] zeroFront(int[] nums){
+
+	public int[] zeroFront(int[] nums) {
 		int[] copy = new int[nums.length];
 		int zeroCount = 0;
 		int nonZero = -1;
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]==0){
-				copy[zeroCount]=0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 0) {
+				copy[zeroCount] = 0;
 				zeroCount++;
-			}else{
+			} else {
 				nonZero = nums[i];
 			}
 		}
-		
-		for(int j=zeroCount; j<nums.length; j++){
-			copy[j]=nonZero;
+
+		for (int j = zeroCount; j < nums.length; j++) {
+			copy[j] = nonZero;
 		}
 		return copy;
 	}
-	
-	public int[] notAlone(int[] nums, int val){
-		
+
+	public int[] notAlone(int[] nums, int val) {
+
 		int[] copy = new int[nums.length];
-		
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]==val){
-				copy[i]=isAlone(i, nums);
-			}else
-				copy[i]=nums[i];
+
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == val) {
+				copy[i] = isAlone(i, nums);
+			} else
+				copy[i] = nums[i];
 		}
-		
+
 		return copy;
 	}
-	
+
 	private int isAlone(int i, int[] nums) {
-		if(i==0){
+		if (i == 0) {
 			return nums[i];
 		}
-		
-		if(i==nums.length-1)
-			return nums[nums.length-1];
-		
-		int left = nums[i-1];
-		int right = nums[i+1];
-		
-		if(left==nums[i] || right==nums[i])
+
+		if (i == nums.length - 1)
+			return nums[nums.length - 1];
+
+		int left = nums[i - 1];
+		int right = nums[i + 1];
+
+		if (left == nums[i] || right == nums[i])
 			return nums[i];
-		
-		if(left>right)
+
+		if (left > right)
 			return left;
-		
+
 		return right;
 	}
 
-	public int[] post4(int[] nums){
-		if(nums.length==0)
+	public int[] post4(int[] nums) {
+		if (nums.length == 0)
 			return new int[0];
-		
-		if(nums.length==1 && nums[0]==4)
+
+		if (nums.length == 1 && nums[0] == 4)
 			return new int[0];
-		
+
 		int firstFourIndex = -1;
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]==4){
-				firstFourIndex= i+1;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 4) {
+				firstFourIndex = i + 1;
 			}
 		}
-		
-		int count=0;
-		int[] post4Array = new int[nums.length-firstFourIndex];
-		for(int i=firstFourIndex; i<nums.length; i++){
+
+		int count = 0;
+		int[] post4Array = new int[nums.length - firstFourIndex];
+		for (int i = firstFourIndex; i < nums.length; i++) {
 			post4Array[count] = nums[i];
 			count++;
 		}
 		return post4Array;
 	}
-	
-	public int[] pre4(int[] nums){
-		if(nums.length==0)
+
+	public int[] pre4(int[] nums) {
+		if (nums.length == 0)
 			return new int[0];
-		
-		if(nums.length==1 && nums[0]==4)
+
+		if (nums.length == 1 && nums[0] == 4)
 			return nums;
-		
+
 		int firstFourIndex = -1;
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]==4){
-				firstFourIndex= i;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 4) {
+				firstFourIndex = i;
 				break;
 			}
 		}
-		
+
 		int[] pre4Array = new int[firstFourIndex];
-		for(int i=0; i<firstFourIndex; i++){
+		for (int i = 0; i < firstFourIndex; i++) {
 			pre4Array[i] = nums[i];
 		}
 		return pre4Array;
 	}
-	
-	public int[] tenRun(int[] nums){
+
+	public int[] tenRun(int[] nums) {
 		int[] copy = new int[nums.length];
 		boolean tenrun = false;
 		int tenCount = 10;
-		
-		
-		for(int i=0; i<nums.length; i++){
-			if(nums[i]%10==0 && tenrun==false){
-				copy[i]=nums[i];
+
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] % 10 == 0 && tenrun == false) {
+				copy[i] = nums[i];
 				tenCount = nums[i];
-				tenrun=true;
-			}else{
-				if(tenrun==false)
-					copy[i]=nums[i];
-				
-				if(tenrun==true && nums[i]%10==0){
+				tenrun = true;
+			} else {
+				if (tenrun == false)
+					copy[i] = nums[i];
+
+				if (tenrun == true && nums[i] % 10 == 0) {
 					tenCount = nums[i];
-					copy[i]=nums[i];
+					copy[i] = nums[i];
 				}
-				
-				if(tenrun==true){				
-					copy[i]= tenCount;
+
+				if (tenrun == true) {
+					copy[i] = tenCount;
 				}
 			}
 		}
 		return copy;
 	}
-	
-	public int[] shiftLeft(int[] nums){
-		if(nums.length<2)
+
+	public int[] shiftLeft(int[] nums) {
+		if (nums.length < 2)
 			return nums;
-		
+
 		int firstNum = nums[0];
 		int[] leftArray = new int[nums.length];
-		for(int i=0; i<nums.length-1; i++){
-			leftArray[i] = nums[i+1];
+		for (int i = 0; i < nums.length - 1; i++) {
+			leftArray[i] = nums[i + 1];
 		}
-		
-		leftArray[nums.length-1] = firstNum;
+
+		leftArray[nums.length - 1] = firstNum;
 		return leftArray;
 	}
-	
+
 	public boolean tripleUp(int[] nums) {
-		int num1=0;
-		int num2=0;
-		int num3=0;
+		int num1 = 0;
+		int num2 = 0;
+		int num3 = 0;
 		for (int i = 2; i < nums.length; i++) {
-			num1=nums[i-2];
-			num2=nums[i-1];
-			num3=nums[i-0];
-			if(num1<num2 && num2<num3 
-					&& Math.abs(num2-num1)<2 
-					&& Math.abs(num3-num2)<2)
+			num1 = nums[i - 2];
+			num2 = nums[i - 1];
+			num3 = nums[i - 0];
+			if (num1 < num2 && num2 < num3 && Math.abs(num2 - num1) < 2
+					&& Math.abs(num3 - num2) < 2)
 				return true;
 		}
 

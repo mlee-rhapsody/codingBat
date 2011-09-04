@@ -19,12 +19,23 @@ public class Array2Tests {
 	}
 	
 	@Test
+	public void evenOdd(){
+		assertTrue(Arrays.equals(Arr.integer(0,0,0,1,1,1,1), tst.evenOdd(Arr.integer(1,0,1,0,0,1,1))));
+		assertTrue(Arrays.equals(Arr.integer(4,4,4,1,1,1,1), tst.evenOdd(Arr.integer(1,4,1,4,4,1,1))));
+		assertTrue(Arrays.equals(Arr.integer(2,3,3), tst.evenOdd(Arr.integer(3,3,2))));
+		assertTrue(Arrays.equals(Arr.integer(2,2,2), tst.evenOdd(Arr.integer(2,2,2))));
+	}
+	
+	@Test
 	public void zeroMax(){
+		
+		assertTrue(Arrays.equals(Arr.integer(1), tst.zeroMax(Arr.integer(1))));
+		assertTrue(Arrays.equals(Arr.integer(1,5,5,5,5), tst.zeroMax(Arr.integer(1,0,5,5,5))));
 		assertTrue(Arrays.equals(Arr.integer(), tst.zeroMax(Arr.integer())));
-//		assertTrue(Arrays.equals(Arr.integer(5,1,5), tst.zeroMax(Arr.integer(0,1,5))));
-//		assertTrue(Arrays.equals(Arr.integer(5,5,3,3), tst.zeroMax(Arr.integer(0,5,0,3))));
-//		assertTrue(Arrays.equals(Arr.integer(3,4,3,3), tst.zeroMax(Arr.integer(0,4,0,3))));
-//		assertTrue(Arrays.equals(Arr.integer(1,1,0), tst.zeroMax(Arr.integer(0,1,0))));
+		assertTrue(Arrays.equals(Arr.integer(5,1,5), tst.zeroMax(Arr.integer(0,1,5))));
+		assertTrue(Arrays.equals(Arr.integer(5,5,3,3), tst.zeroMax(Arr.integer(0,5,0,3))));
+		assertTrue(Arrays.equals(Arr.integer(3,4,3,3), tst.zeroMax(Arr.integer(0,4,0,3))));
+		assertTrue(Arrays.equals(Arr.integer(1,1,0), tst.zeroMax(Arr.integer(0,1,0))));
 	}
 	
 	
