@@ -1,13 +1,63 @@
 package javalearning;
 
-import java.util.Arrays;
 
 public class Array3 {
 	public final static Array3 INSTANCE = new Array3();
 
 	private Array3() {
 	}
+	
+	public int countClumps(int[] nums){
+		if(nums.length==0)
+			return 0;
+		
+		if(nums.length==1)
+			return 1;
+		
+		//Check if all item are the same
+		boolean countingClump = false;
+		if(nums[0]==nums[1])
+			countingClump = true;
+		for(int i=1; i<nums.length; i++){
+			if(nums[i-1]!=nums[i])
+				countingClump = false;
+		}
+		if(countingClump == true)
+			return 1;
 
+		//Check for multiple clumps
+		int clumpCount = 0;
+		countingClump = false;
+		if(nums[0]==nums[1]){
+			countingClump = true;
+		}
+		for(int i=1; i<nums.length; i++){
+			if(nums[i-1]!=nums[i] && countingClump==true){
+				countingClump = false;
+				clumpCount++;
+			}
+			
+			if(nums[i-1]==nums[i] && countingClump == false)
+				countingClump = true;
+			
+			//
+			if(nums[i-1]!=nums[i] && countingClump==false){
+				countingClump = false;
+			}
+			
+			if(nums[i-1]==nums[i] && countingClump == false)
+				countingClump = true;
+			
+			System.out.println(countingClump);
+		}
+		
+		if(nums[nums.length-2]==nums[nums.length-1] && countingClump==true){
+			clumpCount++;
+		}
+		
+		return clumpCount;
+	}
+	
 	public int maxMirror(int[] nums){
 		
 		if(nums.length==0)
@@ -30,7 +80,6 @@ public class Array3 {
 			int[] subarray = getSubArray(reverseCopy, 0, i);
 			find = arrayFind(nums, subarray);
 			int curCount = subarray.length;
-			System.out.printf("%2d %s %d %1$b %n",maxCount, Arrays.toString(subarray),  curCount, find);
 			if(find){
 				if(curCount>=maxCount){
 					maxCount = curCount;
@@ -43,7 +92,6 @@ public class Array3 {
 			int[] subarray = getSubArray(reverseCopy, i, nums.length-i);
 			find = arrayFind(nums, subarray);
 			int curCount = subarray.length;
-			System.out.printf("%2d %s %d %1$b %n",maxCount, Arrays.toString(subarray),  curCount, find);
 			if(find){
 				if(curCount>=maxCount){
 					maxCount = curCount;
@@ -54,13 +102,16 @@ public class Array3 {
 		//Grow substring from start=n to n
 		for(int i=0; i< nums.length; i++){
 			for(int j=i; j<nums.length; j++){
-				System.out.printf("%2d %2d%n", i, j);
+				int[] subarray = getSubArray(reverseCopy, i, j);
+				find = arrayFind(nums, subarray);
+				int curCount = subarray.length;
+				if(find){
+					if(curCount>=maxCount){
+						maxCount = curCount;
+					}
+				}
 			}
 		}
-		
-		
-		
-		System.out.println("maxCount = "+maxCount);
 		return maxCount;
 	}
 	
@@ -68,8 +119,12 @@ public class Array3 {
 	public int[] getSubArray(int[] reverseCopy, int offset, int length) {
 		int[] copy = new int[length];
 		
+		
+		
 		for(int i=0; i<length; i++){
-			copy[i]=reverseCopy[offset+i];
+			int copyIndex = offset+i;
+			if(copyIndex<reverseCopy.length)
+				copy[i]=reverseCopy[copyIndex];
 		}
 		return copy;
 	}

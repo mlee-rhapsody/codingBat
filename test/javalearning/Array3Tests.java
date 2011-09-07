@@ -19,13 +19,27 @@ public class Array3Tests {
 	}
 
 	@Test
+	public void countClumps(){
+		assertEquals(0, tst.countClumps(Arr.integer()));
+		assertEquals(1, tst.countClumps(Arr.integer(4)));
+		assertEquals(1, tst.countClumps(Arr.integer(4,4)));
+		assertEquals(1, tst.countClumps(Arr.integer(1,1,1,1,1,1)));
+		
+		assertEquals(1, tst.countClumps(Arr.integer(1,1,1,1,1,2)));
+		assertEquals(1, tst.countClumps(Arr.integer(2,1,1,1,1,2)));
+		assertEquals(2, tst.countClumps(Arr.integer(2,1,1,2,1,1,2)));
+		
+		assertEquals(2, tst.countClumps(Arr.integer(1,2,2,3,4,4)));
+	}
+	
+	@Test
 	public void maxMirror(){
-//		assertEquals(4, tst.maxMirror(Arr.integer(21, 22, 9, 8, 7, 6, 23, 24, 6, 7, 8, 9, 25, 7, 8, 9)));
+		assertEquals(4, tst.maxMirror(Arr.integer(21, 22, 9, 8, 7, 6, 23, 24, 6, 7, 8, 9, 25, 7, 8, 9)));
 		assertEquals(2, tst.maxMirror(Arr.integer(1, 2, 3, 3, 8)));
-//		assertEquals(3, tst.maxMirror(Arr.integer(1,1,1)));
-//		assertEquals(3, tst.maxMirror(Arr.integer(1,2,3,8,9,3,2,1)));
-//		assertEquals(3, tst.maxMirror(Arr.integer(1,2,1,4)));
-//		assertEquals(2, tst.maxMirror(Arr.integer(7,1,2,9,7,2,1)));
+		assertEquals(3, tst.maxMirror(Arr.integer(1,1,1)));
+		assertEquals(3, tst.maxMirror(Arr.integer(1,2,3,8,9,3,2,1)));
+		assertEquals(3, tst.maxMirror(Arr.integer(1,2,1,4)));
+		assertEquals(2, tst.maxMirror(Arr.integer(7,1,2,9,7,2,1)));
 	}
 	
 	@Test
