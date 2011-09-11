@@ -48,7 +48,6 @@ public class Array3 {
 			if(nums[i-1]==nums[i] && countingClump == false)
 				countingClump = true;
 			
-			System.out.println(countingClump);
 		}
 		
 		if(nums[nums.length-2]==nums[nums.length-1] && countingClump==true){
